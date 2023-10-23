@@ -1,0 +1,51 @@
+@import "../../styles/colors.scss";
+@import "../../styles/fonts.scss";
+
+.screen {
+  height: 100%;
+  background-color: #fff;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+  padding-top: 15%;
+  padding-bottom: 20%;
+}
+
+.largeText {
+  font-family: $boldFont;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 32px;
+  color: #000;
+  text-align: center;
+}
+
+.midText {
+  font-family: $boldFont;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  color: #000;
+  text-align: center;
+}
+
+.largeTextPurple {
+  font-family: $boldFont;
+  font-size: 32px;
+  line-height: 32px;
+  font-weight: 700;
+  color: $mainPurple;
+}
+
+.homeImage {
+  width: 256px;
+  height: 270px;
+}

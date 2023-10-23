@@ -1,0 +1,44 @@
+@import "../../styles/colors.scss";
+@import "../../styles/fonts.scss";
+
+.midText {
+  font-family: $boldFont;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 18px;
+  color: #000;
+  text-align: center;
+}
+.uploadIcon {
+  width: 192px;
+  height: 128px;
+  margin-bottom: 12px;
+}
+.removeImageIcon {
+  width: 24px;
+  height: 24px;
+}
+.removeImageButton {
+  position: absolute;
+  top: -6;
+  left: -6;
+}
+.uploadedImage {
+  width: 208px;
+  height: 208px;
+  border-radius: 20px;
+}
+.uploadedImageWrapper {
+  width: 208px;
+  height: 208px;
+}
+.confirmButtonWrapper {
+  margin-top: 24px;
+}
+
+.uploadComponentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
