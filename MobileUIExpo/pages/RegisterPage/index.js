@@ -75,7 +75,12 @@ function PersonalEntry({
           secure={false}
           value={email}
         />
-        {error === "" ? null : <Text style={styles.errorText}>{error}</Text>}
+        {error === "" ||
+        error == InputErrorMessage.INVALID_PASSWORD ||
+        error == InputErrorMessage.PASSWORD_MISMATCH ||
+        error == InputErrorMessage.MALFORMED_PASSWORD ? null : (
+          <Text style={styles.errorText}>{error}</Text>
+        )}
       </View>
       <MainButton onPress={handleContinue} text="Continue" long />
     </View>
