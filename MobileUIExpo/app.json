@@ -35,6 +35,12 @@
           "photosPermission": "Allow PotholePros to access your photos",
           "cameraPermission": "Allow PotholePros to access your camera"
         }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow PotholePros to use your location."
+        }
       ]
     ]
   }

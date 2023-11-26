@@ -1,0 +1,77 @@
+@import "../../styles/base.scss";
+
+.keyboardWrapper {
+  height: 100%;
+}
+
+.infoWrapper {
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2rem;
+  padding-top: 1rem;
+}
+
+.infoInputContainer {
+  gap: 1rem;
+}
+.errorText {
+  font-family: $regularFont;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 14px;
+  color: #ed7b7b;
+  text-align: center;
+}
+
+.passwordWrapper {
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2rem;
+  padding-top: 1rem;
+}
+
+.passwordEntry {
+  gap: 1rem;
+}
+
+.passwordBottom {
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 90%;
+}
+
+.baseline {
+  width: 327px;
+  border-bottom-color: #e3e5e5;
+  border-bottom-width: 4px;
+  border-bottom-style: solid;
+  border-radius: 4px;
+  align-self: center;
+}
+
+.colorlineLeft {
+  width: 163.5px;
+  border-bottom-color: $mainPurple;
+  border-bottom-width: 4px;
+  border-bottom-style: solid;
+  border-radius: 4px;
+  align-self: center;
+  position: absolute;
+  left: 0;
+}
+
+.colorlineRight {
+  width: 163.5px;
+  border-bottom-color: $mainPurple;
+  border-bottom-width: 4px;
+  border-bottom-style: solid;
+  border-radius: 4px;
+  align-self: center;
+  position: absolute;
+  right: 0;
+}

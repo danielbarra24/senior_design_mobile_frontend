@@ -1,0 +1,32 @@
+@import "../../styles/base.scss";
+
+.keyboardWrapper {
+  height: 100%;
+}
+
+.container {
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.loginContainer {
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.loginSubmission {
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.errorText {
+  font-family: $regularFont;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 14px;
+  color: #ed7b7b;
+  text-align: center;
+}

@@ -1,14 +1,5 @@
-@import "../../styles/colors.scss";
-@import "../../styles/fonts.scss";
+@import "../../styles/base.scss";
 
-.midText {
-  font-family: $boldFont;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 18px;
-  color: #000;
-  text-align: center;
-}
 .uploadIcon {
   width: 192px;
   height: 128px;

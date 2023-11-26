@@ -1,0 +1,62 @@
+$mainPurple: #6b4eff;
+$mainGrey: #72777a;
+
+$regularFont: "Inter-Regular";
+$mediumFont: "Inter-Medium";
+$boldFont: "Inter-Bold";
+
+.screen {
+  height: 100%;
+  background-color: #fff;
+}
+
+.largeText {
+  font-family: $boldFont;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 32px;
+  color: #000;
+  text-align: center;
+}
+
+.largeTextPurple {
+  font-family: $boldFont;
+  font-size: 32px;
+  line-height: 32px;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: $mainPurple;
+}
+
+.midText {
+  font-family: $boldFont;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 18px;
+  color: #000;
+  text-align: center;
+}
+
+.lightText {
+  font-family: $regularFont;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  color: #000;
+}
+
+.lightTextGrey {
+  font-family: $regularFont;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  color: $mainGrey;
+}
+
+.lightTextPurple {
+  font-family: $regularFont;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  color: $mainPurple;
+}

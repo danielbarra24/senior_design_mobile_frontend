@@ -1,5 +1,4 @@
-@import "../../styles/colors.scss";
-@import "../../styles/fonts.scss";
+@import "../../styles/base.scss";
 
 .screen {
   height: 100%;
@@ -17,32 +16,6 @@
   text-align: center;
   padding-top: 15%;
   padding-bottom: 20%;
-}
-
-.largeText {
-  font-family: $boldFont;
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 32px;
-  color: #000;
-  text-align: center;
-}
-
-.midText {
-  font-family: $boldFont;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 32px;
-  color: #000;
-  text-align: center;
-}
-
-.largeTextPurple {
-  font-family: $boldFont;
-  font-size: 32px;
-  line-height: 32px;
-  font-weight: 700;
-  color: $mainPurple;
 }
 
 .homeImage {

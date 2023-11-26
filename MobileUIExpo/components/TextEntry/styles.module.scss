@@ -1,0 +1,54 @@
+@import "../../styles/base.scss";
+
+.textInputContainer {
+  width: 327px;
+  height: 48px;
+  border-radius: 8px;
+  border-width: 2px;
+  border-color: #e3e5e5;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: left;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.textInputContainerError {
+  width: 327px;
+  height: 48px;
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: #ed7b7b;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: left;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.inputText {
+  font-family: $regularFont;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  color: #090a0a;
+  width: 100%;
+}
+
+.nameText {
+  font-family: $regularFont;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #72777a;
+  text-align: left;
+}
+
+.nameTextError {
+  font-family: $regularFont;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #ed7b7b;
+  text-align: left;
+}

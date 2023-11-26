@@ -1,11 +1,1 @@
-@import "../../styles/colors.scss";
-@import "../../styles/fonts.scss";
-
-.lightText {
-  font-family: $regularFont;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 16px;
-  color: #979c9e;
-  text-align: center;
-}
+@import "../../styles/base.scss";
