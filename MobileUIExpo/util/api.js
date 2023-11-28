@@ -9,6 +9,10 @@ axios.defaults.withCredentials = true;
  * @param promise - the promise to resolve
  * @returns an object with data property set to the response data if the response is successful and is unassigned otherwise, an error property set to the error if the response is an error or is unassigned otherwise, and an error.message property set to the error message if it exists on the error object.
  */
+
+//error handling here 
+
+
 async function resolve(promise) {
   const resolved = {
     data: null,
@@ -36,9 +40,12 @@ async function resolve(promise) {
 /**
  * To UPDATE DURING DEPLOYMENT USING ENVIRONMENT VARIABLES
  */
+
+//add backend url here 
+
 const BACKENDURL = process.env.PUBLIC_URL
   ? process.env.PUBLIC_URL
-  : "http://localhost:4000";
+  : "http://127.0.0.1:5000/detect-pothole";
 
 const URLPREFIX = `${BACKENDURL}/api`;
 
@@ -90,6 +97,8 @@ async function postData(url, data = {}) {
  * @param data - an optional object containing the data in json format to send to the server. Default is an empty object
  * @returns the response from the server after being resolved by the {@link resolve} function
  */
+
+//need to add the url here?? i think??
 async function putData(url, data = {}) {
   const response = await resolve(axios.put(`${URLPREFIX}/${url}`, data));
   return response;

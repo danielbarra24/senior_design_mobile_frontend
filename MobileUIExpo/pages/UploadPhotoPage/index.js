@@ -13,7 +13,7 @@ function UploadPage({ navigation }) {
   const handleReturn = () => {
     navigation.navigate("Home");
   };
-
+//make format of image correct because idk if this is compatible w what we have rn 
   const processImage = (image) => {
     if (errorMsg) {
       switch (errorMsg) {
@@ -30,6 +30,29 @@ function UploadPage({ navigation }) {
       alert(
         `Longitude: ${location.coords.longitude}\nLatitude: ${location.coords.latitude}`
       );
+      try {
+        const response =  fetch("http://127.0.0.1:5000/detect-pothole", {
+          method: "POST",
+          body: formData,
+       
+        });
+
+        if (response.ok) {
+          console.log("Pothole detection successful.");
+          const result = response.json();
+          setDetectionResult(result.detected);
+          // Handle the response or update the UI accordingly
+        } else {
+          console.error("Error detecting pothole.");
+          setDetectionResult(null);
+        }
+      } catch (error) {
+        console.error("Error detecting pothole:", error);
+        setDetectionResult(null);
+      }
+   
+      //write callback
+  
       alert("Image processed!");
     }
   };
