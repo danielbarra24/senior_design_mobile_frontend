@@ -9,12 +9,12 @@ import styles from "./styles.module.scss";
 
 function UploadPage({ navigation }) {
   const { location, errorMsg } = useLocation();
+  const [detectionResult, setDetectionResult] = React.useState(null);
 
   const handleReturn = () => {
     navigation.navigate("Home");
-  };
-
-  const processImage = (image) => {
+  }; //make format of image correct because idk if this is compatible w what we have rn
+  const processImage = async (image) => {
     if (errorMsg) {
       switch (errorMsg) {
         case "permission":
@@ -26,11 +26,40 @@ function UploadPage({ navigation }) {
           alert(errorMsg);
       }
     } else {
-      // alert the location longitude and latitude
       alert(
         `Longitude: ${location.coords.longitude}\nLatitude: ${location.coords.latitude}`
       );
-      alert("Image processed!");
+
+      try {
+        console.log(image);
+        let formData = new FormData();
+        formData.append("image", {
+          uri: image,
+          type: "image/jpeg",
+          name: "upload.jpg",
+        });
+        formData.append("latitude", location.coords.latitude.toString());
+        formData.append("longitude", location.coords.longitude.toString());
+        formData.append("filename", "test.jpg"); // If needed by your Flask backend
+
+        const response = await fetch("http://127.0.0.1:5000/detect-pothole", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (response.ok) {
+          console.log("Pothole detection successful.");
+          const result = await response.json();
+          setDetectionResult(result);
+        } else {
+          // console.log(response);
+          // console.log("Error detecting pothole.");
+          setDetectionResult(null);
+        }
+      } catch (error) {
+        // console.error("Error detecting pothole:", error);
+        setDetectionResult(null);
+      }
     }
   };
 
