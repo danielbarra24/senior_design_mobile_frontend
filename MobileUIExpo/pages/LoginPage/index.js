@@ -97,7 +97,7 @@ function LoginPage({ navigation }) {
   const handleLogin = () => {
     if (checkInput(email, password, setError)) {
       setError("");
-      navigation.navigate("Upload");
+      navigation.navigate("Camera");
     }
   };
 

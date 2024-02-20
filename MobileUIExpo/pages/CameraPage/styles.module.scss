@@ -1,0 +1,64 @@
+@import "../../styles/base.scss";
+
+.container {
+  display: flex;
+  height: 100%;
+}
+
+.camera {
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.buttonContainer {
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.transparentFooter {
+  background-color: #000;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  opacity: 0.4;
+}
+
+.buttonOuter {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: transparent;
+  justify-content: center;
+  align-items: center;
+  border-width: 2px;
+  border-color: #fff;
+  margin-top: 15;
+}
+
+.buttonInner {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+}
+
+.buttonInnerAuto {
+  width: 40px;
+  height: 40px;
+  border-radius: 10%;
+  background-color: red;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+}
+
+.permissionsPage {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

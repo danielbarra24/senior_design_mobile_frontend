@@ -7,7 +7,8 @@ import styles from "./styles.module.scss";
 
 function HomePage({ navigation }) {
   const handleNavigate = () => {
-    navigation.navigate("Login");
+    // navigation.navigate("Login");
+    navigation.navigate("Camera");
   };
   const homeImage = require("../../assets/images/Woman_Documenting_Hole.png");
 

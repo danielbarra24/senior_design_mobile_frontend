@@ -6,6 +6,7 @@ import UploadComponent from "../../components/UploadComponent";
 import useLocation from "../../hooks/useLocation";
 
 import styles from "./styles.module.scss";
+import { postData } from "../../util/api";
 
 function UploadPage({ navigation }) {
   const { location, errorMsg } = useLocation();
@@ -14,7 +15,7 @@ function UploadPage({ navigation }) {
     navigation.navigate("Home");
   };
 
-  const processImage = (image) => {
+  const processImage = async (image) => {
     if (errorMsg) {
       switch (errorMsg) {
         case "permission":
@@ -30,7 +31,22 @@ function UploadPage({ navigation }) {
       alert(
         `Longitude: ${location.coords.longitude}\nLatitude: ${location.coords.latitude}`
       );
-      alert("Image processed!");
+      // post request
+      // write a callback
+      const response = await postData("detect-pothole", {
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+        image: {
+          uri: image,
+          type: "image/jpeg",
+          name: "pothole.jpg",
+        },
+      });
+      if (response.error) {
+        alert("ERROR: " + response.error);
+      } else {
+        alert(response.data);
+      }
     }
   };
 
