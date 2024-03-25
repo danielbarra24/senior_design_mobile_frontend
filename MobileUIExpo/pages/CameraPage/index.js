@@ -100,9 +100,9 @@ function CameraPage({ navigation }) {
         },
       });
       if (response.error) {
-        alert("ERROR: " + response.error);
+        console.log("ERROR: " + response.error);
       } else {
-        alert(response.data);
+        console.log(response.data);
       }
     }
   };
