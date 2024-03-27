@@ -26,6 +26,7 @@
     "react-native-sass-transformer": "^2.0.0",
     "react-native-screens": "~3.22.0",
     "react-redux": "^9.1.0",
+    "redux": "^5.0.1",
     "sass": "^1.69.4"
   },
   "devDependencies": {

@@ -1,4 +1,5 @@
-import { createStore } from "import { connect } from 'react-redux'";
+import { configureStore } from "@reduxjs/toolkit";
+
 import emailReducer from "./emailSlice";
 
 const store = configureStore({
