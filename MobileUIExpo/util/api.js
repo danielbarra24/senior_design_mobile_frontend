@@ -27,6 +27,8 @@ async function resolve(promise) {
       resolved.error.message = err.response.data.message;
     } else {
       // Handles case for axios errors
+      console.log(err.config);
+      console.log(err.toJSON());
       resolved.error = err;
     }
   }
@@ -84,6 +86,21 @@ async function postData(url, data = {}) {
   const response = await resolve(axios.post(`${URLPREFIX}/${url}`, data));
   return response;
 }
+
+async function postDataMultiForm(url, formData = new FormData()) {
+  // try {
+  //   return await axios.post(`${URLPREFIX}/${url}`, formData);
+  // } catch (e) {
+  //   console.log(e);
+  // }
+  const response = await resolve(
+    axios.post(`${URLPREFIX}/${url}`, formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    })
+  );
+  return response;
+}
+
 /**
  * A function which makes a put request to the server when given a url and an optional body and returns the response data after it is resolved by the {@link resolve} function.
  * @param url - a string representing the url to make the request to. The format should be 'router/endpoint'
@@ -106,4 +123,4 @@ async function deleteData(url, data = {}) {
   return response;
 }
 
-export { getData, putData, deleteData, postData, useData };
+export { getData, putData, deleteData, postData, postDataMultiForm, useData };

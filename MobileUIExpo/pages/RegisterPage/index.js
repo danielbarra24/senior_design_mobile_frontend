@@ -23,6 +23,8 @@ import {
 
 import styles from "./styles.module.scss";
 
+import { postData } from "../../util/api";
+
 function PersonalEntry({
   setFirstName,
   setLastName,
@@ -193,10 +195,22 @@ function RegisterPage({ navigation }) {
     }
   };
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     if (checkPassword(password, confirmPassword, setError)) {
-      setError("");
-      navigation.navigate("Upload");
+      res = await postData("signup", {
+        username: email,
+        email: email,
+        password: password,
+        first_name: firstName,
+        last_name: lastName,
+      });
+      console.log(res);
+      if (res.error) {
+        setError(InputErrorMessage.EMAIL_ALREADY_EXISTS);
+      } else {
+        setError("");
+        navigation.navigate("Login");
+      }
     }
   };
 

@@ -18,7 +18,12 @@ import {
   passwordRegex,
 } from "../../util/inputValidation";
 
+import { postData } from "../../util/api";
+
 import styles from "./styles.module.scss";
+
+import { useDispatch } from "react-redux";
+import { setEmail } from "../../store/emailSlice";
 
 function LoginEntry({
   setEmail,
@@ -75,7 +80,7 @@ function LoginSubmission({ handleLogin, handleRegister }) {
   );
 }
 
-function checkInput(email, password, setError) {
+async function checkInput(email, password, setError) {
   if (email === "" || password === "") {
     setError(InputErrorMessage.MISSING_INPUT);
     return false;
@@ -86,6 +91,15 @@ function checkInput(email, password, setError) {
     setError(InputErrorMessage.INVALID_PASSWORD);
     return false;
   }
+  loginAttempt = await postData("login", { email, password });
+
+  if (loginAttempt.error && loginAttempt.error.status === 401) {
+    setError(InputErrorMessage.INVALID_PASSWORD);
+    return false;
+  } else if (loginAttempt.error) {
+    setError(InputErrorMessage.GENERAL);
+    return false;
+  }
   return true;
 }
 
@@ -93,11 +107,13 @@ function LoginPage({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const dispatch = useDispatch();
 
   const handleLogin = () => {
     if (checkInput(email, password, setError)) {
       setError("");
-      navigation.navigate("Camera");
+      dispatch(setEmail(email));
+      navigation.navigate("Home");
     }
   };
 
@@ -115,7 +131,7 @@ function LoginPage({ navigation }) {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.keyboardWrapper}
       >
-        <Header navigation={navigation} text="Login" />
+        <Header text="Login" />
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.container}>
             <LoginEntry

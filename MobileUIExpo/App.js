@@ -10,6 +10,9 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import CameraPage from "./pages/CameraPage";
 import { useFonts } from "expo-font";
+import store from "./store";
+import { Provider } from "react-redux";
+import CreditsPage from "./pages/CreditsPage";
 
 const Stack = createNativeStackNavigator();
 
@@ -25,21 +28,24 @@ function App() {
   }
 
   return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-          }}
-        >
-          <Stack.Screen name="Home" component={HomePage} />
-          <Stack.Screen name="Upload" component={UploadPhotoPage} />
-          <Stack.Screen name="Login" component={LoginPage} />
-          <Stack.Screen name="Register" component={RegisterPage} />
-          <Stack.Screen name="Camera" component={CameraPage} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SafeAreaProvider>
+    <Provider store={store}>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerShown: false,
+            }}
+          >
+            <Stack.Screen name="Credits" component={CreditsPage} />
+            <Stack.Screen name="Login" component={LoginPage} />
+            <Stack.Screen name="Home" component={HomePage} />
+            <Stack.Screen name="Upload" component={UploadPhotoPage} />
+            <Stack.Screen name="Register" component={RegisterPage} />
+            <Stack.Screen name="Camera" component={CameraPage} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </Provider>
   );
 }
 

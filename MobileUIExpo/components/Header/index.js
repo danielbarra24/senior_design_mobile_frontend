@@ -7,13 +7,19 @@ const backButton = require("../../assets/images/L_Arrow.png");
 
 function Header({ navigation, text }) {
   const handleNavigate = () => {
-    navigation.goBack();
+    if (navigation) {
+      navigation.goBack();
+    }
   };
-  return (
+  return navigation ? (
     <View style={styles.header}>
       <Pressable onPress={handleNavigate} style={styles.back}>
         <Image source={backButton} />
       </Pressable>
+      <Text style={styles.headerText}>{text}</Text>
+    </View>
+  ) : (
+    <View style={styles.header}>
       <Text style={styles.headerText}>{text}</Text>
     </View>
   );

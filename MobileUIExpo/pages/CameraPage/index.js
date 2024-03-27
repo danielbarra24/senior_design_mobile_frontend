@@ -11,14 +11,16 @@ import styles from "./styles.module.scss";
 import TransparentHeader from "../../components/TransparentHeader";
 import useLocation from "../../hooks/useLocation";
 
-import { postData } from "../../util/api";
+import { postDataMultiForm } from "../../util/api";
 
 import {
   SafeAreaView,
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
 
-import LightTextPurpleButton from "../../components/LightTextPurpleButton";
+import { useSelector } from "react-redux";
+
+import { selectEmail } from "../../store/emailSlice";
 
 function CameraPage({ navigation }) {
   const [permission, requestPermission] = Camera.useCameraPermissions();
@@ -27,6 +29,7 @@ function CameraPage({ navigation }) {
   const insets = useSafeAreaInsets();
   const [auto, setAuto] = useState(false);
   const { location, errorMsg } = useLocation();
+  const email = useSelector(selectEmail);
 
   useEffect(() => {
     if (auto) {
@@ -85,24 +88,28 @@ function CameraPage({ navigation }) {
       }
     } else {
       // alert the location longitude and latitude
-      alert(
-        `Longitude: ${location.coords.longitude}\nLatitude: ${location.coords.latitude}`
-      );
-      // post request
-      // write a callback
-      const response = await postData("detect-pothole", {
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
-        image: {
-          uri: image.uri,
-          type: "image/jpeg",
-          name: "pothole.jpg",
-        },
-      });
+      // alert(
+      //   `Longitude: ${location.coords.longitude}\nLatitude: ${location.coords.latitude}`
+      // );
+
+      const localUri = image.uri;
+      let filename = localUri.split("/").pop();
+
+      // Infer the type of the image
+      const match = /\.(\w+)$/.exec(filename);
+      const type = match ? `image/${match[1]}` : `image`;
+
+      const formData = new FormData();
+      formData.append("image", { uri: localUri, name: filename, type });
+      formData.append("latitude", location.coords.latitude);
+      formData.append("longitude", location.coords.longitude);
+      formData.append("filename", filename);
+      formData.append("user_id", email);
+      const response = await postDataMultiForm("detect-pothole", formData);
       if (response.error) {
         console.log("ERROR: " + response.error);
       } else {
-        console.log(response.data);
+        console.log(response);
       }
     }
   };
