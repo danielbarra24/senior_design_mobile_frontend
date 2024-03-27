@@ -23,7 +23,7 @@ import { postData } from "../../util/api";
 import styles from "./styles.module.scss";
 
 import { useDispatch } from "react-redux";
-import { setEmail } from "../../store/emailSlice";
+import { setEmail as setEmailRedux } from "../../store/emailSlice";
 
 function LoginEntry({
   setEmail,
@@ -91,7 +91,12 @@ async function checkInput(email, password, setError) {
     setError(InputErrorMessage.INVALID_PASSWORD);
     return false;
   }
-  loginAttempt = await postData("login", { email, password });
+  loginAttempt = await postData("login", {
+    username: email.toLowerCase(),
+    password: password,
+  });
+
+  console.log("here: " + loginAttempt);
 
   if (loginAttempt.error && loginAttempt.error.status === 401) {
     setError(InputErrorMessage.INVALID_PASSWORD);
@@ -109,10 +114,10 @@ function LoginPage({ navigation }) {
   const [error, setError] = useState("");
   const dispatch = useDispatch();
 
-  const handleLogin = () => {
-    if (checkInput(email, password, setError)) {
+  const handleLogin = async () => {
+    if (await checkInput(email, password, setError)) {
       setError("");
-      dispatch(setEmail(email));
+      dispatch(setEmailRedux(email));
       navigation.navigate("Home");
     }
   };

@@ -198,8 +198,8 @@ function RegisterPage({ navigation }) {
   const handleRegister = async () => {
     if (checkPassword(password, confirmPassword, setError)) {
       res = await postData("signup", {
-        username: email,
-        email: email,
+        username: email.toLowerCase(),
+        email: email.toLowerCase(),
         password: password,
         first_name: firstName,
         last_name: lastName,

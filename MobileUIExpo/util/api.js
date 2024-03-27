@@ -59,7 +59,7 @@ async function getData(url) {
  * @param url - a string representing the url to make the request to. The format should be 'router/endpoint'
  */
 const useData = (url) => {
-  const [data, setData] = (useState < ResolvedReq) | (null > null);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {

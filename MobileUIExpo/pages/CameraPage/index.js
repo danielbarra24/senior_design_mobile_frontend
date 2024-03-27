@@ -33,7 +33,7 @@ function CameraPage({ navigation }) {
 
   useEffect(() => {
     if (auto) {
-      intervalRef.current = setInterval(takePicture, 6000);
+      intervalRef.current = setInterval(takePicture, 3000);
     } else {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);

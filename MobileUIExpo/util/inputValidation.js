@@ -1,5 +1,5 @@
 export const InputErrorMessage = Object.freeze({
-  INVALID_PASSWORD: "Invalid password",
+  INVALID_PASSWORD: "Invalid password or email",
   MALFORMED_PASSWORD:
     'Password must have 6-61 characters and can only use special characters "!?$%^*)(+=._-"',
   INVALID_EMAIL: "Invalid email address",

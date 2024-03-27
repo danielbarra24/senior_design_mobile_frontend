@@ -36,9 +36,9 @@ function App() {
               headerShown: false,
             }}
           >
-            <Stack.Screen name="Credits" component={CreditsPage} />
             <Stack.Screen name="Login" component={LoginPage} />
             <Stack.Screen name="Home" component={HomePage} />
+            <Stack.Screen name="Credits" component={CreditsPage} />
             <Stack.Screen name="Upload" component={UploadPhotoPage} />
             <Stack.Screen name="Register" component={RegisterPage} />
             <Stack.Screen name="Camera" component={CameraPage} />
